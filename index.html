@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Maturana - Equipos de Boxeo Profesional</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header Moderno */
+        .header {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            filter: brightness(1.1);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            color: #ff6b35;
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        .cart-indicator {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%23333" stroke-width="1" opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b35 50%, #f7931e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 107, 53, 0.3);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .product-specs {
+            margin-bottom: 1.5rem;
+        }
+
+        .product-specs p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f7931e;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Cart Section */
+        .cart-section {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 0 2rem 4rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cart-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cart-title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cart-items {
+            min-height: 120px;
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+
+        .cart-total {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f7931e;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(247, 147, 30, 0.1);
+            border-radius: 12px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .checkout-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .payment-info {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .payment-title {
+            color: #ff6b35;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .payment-method {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #25d366;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128c7e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            color: #ff6b35;
+            border-color: #ff6b35;
+            transform: translateY(-3px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem auto 2rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .cart-section {
+                margin: 0 1rem 2rem;
+                padding: 2rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .product-card:nth-child(2) { animation-delay: 0.1s; }
+        .product-card:nth-child(3) { animation-delay: 0.2s; }
+        .product-card:nth-child(4) { animation-delay: 0.3s; }
+        .product-card:nth-child(5) { animation-delay: 0.4s; }
+        .product-card:nth-child(6) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo-container">
+                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjI0MCIgdmlld0JveD0iMCAwIDIwMCAyNDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgZmlsbD0iI0ZGRkZGRiIvPgo8cmVjdCB4PSIxNTIiIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgZmlsbD0iI0ZGRkZGRiIvPgo8cmVjdCB4PSI0OCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSIxOTIiIGZpbGw9IiNGRkZGRkYiLz4KPHBhdGggZD0iTTEwMCAxMDBDMTMwIDcwIDEzMCA3MCA5MCA1MEM2MCA2MCA2MCA5MCA5MCAxMDBDNjAgMTMwIDYwIDEzMCA5MCAxNTBDMTMwIDEyMCAxMzAgMTIwIDEwMCAxMDBaIiBmaWxsPSIjMDAwMDAwIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIvPgo8cGF0aCBkPSJNMTAwIDEwMEM3MCA3MCA3MCA3MCAxMTAgNTBDMTQwIDYwIDE0MCA5MCAxMTAgMTAwQzE0MCAxMzAgMTQwIDEzMCAxMTAgMTUwQzcwIDEyMCA3MCAxMjAgMTAwIDEwMFoiIGZpbGw9IiMwMDAwMDAiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjx0ZXh0IHg9IjEwMCIgeT0iMjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMDAwMDAwIj5URUFNIE1BVFVSQU5BPC90ZXh0Pgo8L3N2Zz4K" alt="Team Maturana Logo">
+                <div class="logo-text">TEAM MATURANA</div>
+            </div>
+            <div class="nav-menu">
+                <a href="#productos" class="nav-link">Productos</a>
+                <a href="#carrito" class="nav-link cart-indicator">
+                    <i class="fas fa-shopping-cart"></i>
+                    Carrito (<span id="cart-count">0</span>)
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Equipos de Boxeo Profesional</h1>
+                <p>La mejor calidad en equipamiento deportivo para campeones. Eleva tu rendimiento con Team Maturana.</p>
+                <a href="#productos" class="cta-button">
+                    <i class="fas fa-boxing-glove" style="margin-right: 0.5rem;"></i>
+                    Ver Productos
+                </a>
+            </div>
+        </section>
+
+        <section id="productos" class="products-section">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Productos</h2>
+                <p class="section-subtitle">Equipamiento profesional para atletas de alto rendimiento</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card" data-nombre="Guantes Pro Elite" data-precio="120000">
+                    <img src="https://images.unsplash.com/photo-1600185365294-6a32353b68b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Guantes Pro Elite" class="product-image">
+                    <h3 class="product-title">Guantes Pro Elite</h3>
+                    <div class="product-specs">
+                        <p><strong>Tallas:</strong> S, M, L, XL</p>
+                        <p><strong>Colores:</strong> Rojo, Azul, Negro</p>
+                        <p><strong>Material:</strong> Cuero genuino</p>
+                    </div>
+                    <div class="product-price">$120.000</div>
+                    <div class="product-actions">
+                        <button class="btn-primary agregar">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                        <button class="btn-secondary qr">
+                            <i class="fas fa-qrcode"></i> Ver QR
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-nombre="Camiseta Dry-Fit Pro" data-precio="85000">
+                    <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta Dry-Fit Pro" class="product-image">
+                    <h3 class="product-title">Camiseta Dry-Fit Pro</h3>
+                    <div class="product-specs">
+                        <p><strong>Tallas:</strong> S, M, L, XL, XXL</p>
+                        <p><strong>Colores:</strong> Blanco, Negro, Gris, Azul</p>
+                        <p><strong>Material:</strong> Microfibra transpirable</p>
+                    </div>
+                    <div class="product-price">$85.000</div>
+                    <div class="product-actions">
+                        <button class="btn-primary agregar">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                        <button class="btn-secondary qr">
+                            <i class="fas fa-qrcode"></i> Ver QR
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-nombre="Vendas Profesionales" data-precio="35000">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vendas Profesionales" class="product-image">
+                    <h3 class="product-title">Vendas Profesionales</h3>
+                    <div class="product-specs">
+                        <p><strong>Longitud:</strong> 4.5 metros</p>
+                        <p><strong>Colores:</strong> Negro, Blanco, Rojo</p>
+                        <p><strong>Material:</strong> Algodón elástico</p>
+                    </div>
+                    <div class="product-price">$35.000</div>
+                    <div class="product-actions">
+                        <button class="btn-primary agregar">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                        <button class="btn-secondary qr">
+                            <i class="fas fa-qrcode"></i> Ver QR
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-nombre="Protector Bucal Pro" data-precio="45000">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Protector Bucal Pro" class="product-image">
+                    <h3 class="product-title">Protector Bucal Pro</h3>
+                    <div class="product-specs">
+                        <p><strong>Tallas:</strong> Junior, Adulto</p>
+                        <p><strong>Colores:</strong> Transparente, Negro, Azul</p>
+                        <p><strong>Material:</strong> Silicona médica</p>
+                    </div>
+                    <div class="product-price">$45.000</div>
+                    <div class="product-actions">
+                        <button class="btn-primary agregar">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                        <button class="btn-secondary qr">
+                            <i class="fas fa-qrcode"></i> Ver QR
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-nombre="Shorts de Boxeo Premium" data-precio="95000">
+                    <img src="https://images.unsplash.com/photo-1506629905607-d5d5a4a2e751?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="
+                    <div class="product-card" data-nombre="Shorts de Boxeo Premium" data-precio="95000">
+                    <img src="https://images.unsplash.com/photo-1506629905607-d5d5a4a2e751?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Shorts de Boxeo Premium" class="product-image">
+                    <h3 class="product-title">Shorts de Boxeo Premium</h3>
+                    <div class="product-specs">
+                        <p><strong>Tallas:</strong> S, M, L, XL, XXL</p>
+                        <p><strong>Colores:</strong> Negro, Azul, Rojo, Blanco</p>
+                        <p><strong>Material:</strong> Satín de alta calidad</p>
+                    </div>
+                    <div class="product-price">$95.000</div>
+                    <div class="product-actions">
+                        <button class="btn-primary agregar">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                        <button class="btn-secondary qr">
+                            <i class="fas fa-qrcode"></i> Ver QR
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-nombre="Zapatillas de Boxeo Pro" data-precio="180000">
+                    <img src="https://images.unsplash.com/photo-1544966503-7cc5ac882d5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas de Boxeo Pro" class="product-image">
+                    <h3 class="product-title">Zapatillas de Boxeo Pro</h3>
+                    <div class="product-specs">
+                        <p><strong>Tallas:</strong> 36-45</p>
+                        <p><strong>Colores:</strong> Negro, Blanco, Rojo</p>
+                        <p><strong>Material:</strong> Cuero sintético transpirable</p>
+                    </div>
+                    <div class="product-price">$180.000</div>
+                    <div class="product-actions">
+                        <button class="btn-primary agregar">
+                            <i class="fas fa-cart-plus"></i> Agregar
+                        </button>
+                        <button class="btn-secondary qr">
+                            <i class="fas fa-qrcode"></i> Ver QR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="carrito" class="cart-section">
+            <div class="cart-header">
+                <i class="fas fa-shopping-cart" style="color: #ff6b35; font-size: 2rem;"></i>
+                <h2 class="cart-title">Tu Carrito de Compras</h2>
+            </div>
+            
+            <div class="cart-items" id="cart-items">
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                    <p>Tu carrito está vacío. ¡Agrega algunos productos!</p>
+                </div>
+            </div>
+            
+            <div class="cart-total" id="cart-total" style="display: none;">
+                Total: $0
+            </div>
+            
+            <button class="checkout-btn" id="checkout-btn" disabled>
+                <i class="fas fa-credit-card"></i>
+                Proceder al Pago
+            </button>
+            
+            <div class="payment-info">
+                <h3 class="payment-title">
+                    <i class="fas fa-payment"></i>
+                    Métodos de Pago
+                </h3>
+                <div class="payment-method">
+                    <i class="fas fa-credit-card" style="color: #ff6b35;"></i>
+                    <span><strong>Tarjeta de Crédito/Débito:</strong> Visa, MasterCard, American Express</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-university" style="color: #ff6b35;"></i>
+                    <span><strong>Transferencia Bancaria:</strong> Bancolombia, Davivienda, Nequi</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fas fa-money-bill-wave" style="color: #ff6b35;"></i>
+                    <span><strong>Pago Contra Entrega:</strong> Disponible en Medellín</span>
+                </div>
+                
+                <a href="https://wa.me/573001234567?text=Hola! Me interesa hacer una compra en Team Maturana" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    Contactar por WhatsApp
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <h3 style="color: #ff6b35; font-size: 1.5rem; margin-bottom: 1rem;">Team Maturana</h3>
+        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 2rem;">
+            Equipamiento profesional de boxeo. Calidad garantizada para campeones.
+        </p>
+        
+        <div class="social-links">
+            <a href="#" class="social-link" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link" title="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        
+        <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
+            © 2024 Team Maturana. Todos los derechos reservados. | Medellín, Colombia
+        </p>
+    </footer>
+
+    <!-- Modal para códigos QR -->
+    <div id="qr-modal" class="modal">
+        <div class="modal-content">
+            <h3 style="color: #ff6b35; margin-bottom: 1rem;">Código QR de Pago</h3>
+            <div class="qr-placeholder">
+                <i class="fas fa-qrcode" style="font-size: 4rem;"></i>
+            </div>
+            <p style="margin-bottom: 1rem;">Escanea este código para pagar directamente</p>
+            <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 2rem;">
+                Compatible con Nequi, Daviplata, Bancolombia y otros
+            </p>
+            <button onclick="cerrarModal()" style="background: #ff6b35; color: white; border: none; padding: 0.8rem 2rem; border-radius: 8px; cursor: pointer;">
+                Cerrar
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let carrito = [];
+        
+        // Función para agregar productos al carrito
+        function agregarAlCarrito(nombre, precio) {
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio: parseInt(precio), cantidad: 1 });
+            }
+            
+            actualizarCarrito();
+        }
+        
+        // Función para eliminar productos del carrito
+        function eliminarDelCarrito(nombre) {
+            carrito = carrito.filter(item => item.nombre !== nombre);
+            actualizarCarrito();
+        }
+        
+        // Función para actualizar la visualización del carrito
+        function actualizarCarrito() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            
+            // Actualizar contador
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            cartCount.textContent = totalItems;
+            
+            // Limpiar carrito
+            cartItems.innerHTML = '';
+            
+            if (carrito.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                        <p>Tu carrito está vacío. ¡Agrega algunos productos!</p>
+                    </div>
+                `;
+                cartTotal.style.display = 'none';
+                checkoutBtn.disabled = true;
+            } else {
+                // Mostrar productos en el carrito
+                carrito.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div>
+                            <strong>${item.nombre}</strong><br>
+                            <span style="color: rgba(255, 255, 255, 0.7);">
+                                $${item.precio.toLocaleString()} x ${item.cantidad}
+                            </span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span style="color: #f7931e; font-weight: 600;">
+                                $${(item.precio * item.cantidad).toLocaleString()}
+                            </span>
+                            <button onclick="eliminarDelCarrito('${item.nombre}')" 
+                                    style="background: #ff4757; color: white; border: none; padding: 0.3rem 0.6rem; border-radius: 5px; cursor: pointer;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+                
+                // Calcular total
+                const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+                cartTotal.textContent = `Total: $${total.toLocaleString()}`;
+                cartTotal.style.display = 'block';
+                checkoutBtn.disabled = false;
+            }
+        }
+        
+        // Función para mostrar modal QR
+        function mostrarQR() {
+            document.getElementById('qr-modal').classList.add('active');
+        }
+        
+        // Función para cerrar modal
+        function cerrarModal() {
+            document.getElementById('qr-modal').classList.remove('active');
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Botones agregar al carrito
+            document.querySelectorAll('.agregar').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.product-card');
+                    const nombre = card.dataset.nombre;
+                    const precio = card.dataset.precio;
+                    
+                    agregarAlCarrito(nombre, precio);
+                    
+                    // Animación visual
+                    this.style.background = '#2ecc71';
+                    this.innerHTML = '<i class="fas fa-check"></i> ¡Agregado!';
+                    
+                    setTimeout(() => {
+                        this.style.background = 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)';
+                        this.innerHTML = '<i class="fas fa-cart-plus"></i> Agregar';
+                    }, 1500);
+                });
+            });
+            
+            // Botones QR
+            document.querySelectorAll('.qr').forEach(btn => {
+                btn.addEventListener('click', mostrarQR);
+            });
+            
+            // Cerrar modal al hacer click fuera
+            document.getElementById('qr-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    cerrarModal();
+                }
+            });
+            
+            // Botón de checkout
+            document.getElementById('checkout-btn').addEventListener('click', function() {
+                if (carrito.length > 0) {
+                    const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+                    const productos = carrito.map(item => 
+                        `${item.nombre} (x${item.cantidad}) - $${(item.precio * item.cantidad).toLocaleString()}`
+                    ).join('\n');
+                    
+                    const mensaje = `¡Hola! Me gustaría hacer el siguiente pedido:\n\n${productos}\n\nTotal: $${total.toLocaleString()}\n\n¿Podrían confirmar disponibilidad y forma de pago?`;
+                    const whatsappUrl = `https://wa.me/573001234567?text=${encodeURIComponent(mensaje)}`;
+                    
+                    window.open(whatsappUrl, '_blank');
+                }
+            });
+            
+            // Smooth scroll para los enlaces
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
